@@ -11,7 +11,7 @@
         <!--Album search by Artist name-->
         <scene sceneID="cKA-Yr-3Q9">
             <objects>
-                <tableViewController id="Lrn-WV-eD0" sceneMemberID="viewController">
+                <tableViewController id="Lrn-WV-eD0" customClass="AlbumListTableViewController" customModule="iTunes_API" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="cay-TE-fxs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,6 +40,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Album search by Artist name" id="8Bu-H3-tQe"/>
+                    <connections>
+                        <outlet property="searchBar" destination="v4N-Ly-261" id="SMQ-Qx-ffq"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pw2-2n-znW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
