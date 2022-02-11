@@ -12,17 +12,17 @@ class NetworkController {
     // MARK: -URL
     
 static let baseURL = URL(string: "https://itunes.apple.com")
-    //ex "https://itunes.apple.com/search?term=audioslave&media=music&entity=album"
     
     // MARK: -Fetch Album Func
     static func fetchAlbumWith(searchTerm: String, completion: @escaping (Result<TopLevelDictionaryAlbums, ResultError>) -> Void) {
         
         guard let url = baseURL else { return }
-        let searchKey = URLQueryItem(name: "/search?term=", value: searchTerm)
-        let mediaKey = URLQueryItem(name: "&media=", value: "music")
-        let entityKey = URLQueryItem(name: "&entity=", value: "album")
+        let searchKey = URLQueryItem(name: "term", value: searchTerm)
+        let mediaKey = URLQueryItem(name: "media", value: "music")
+        let entityKey = URLQueryItem(name: "entity", value: "album")
         
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
+        urlComponents?.path = "/search"
         urlComponents?.queryItems = [searchKey, mediaKey, entityKey]
         
         guard let finalURL = urlComponents?.url else {
