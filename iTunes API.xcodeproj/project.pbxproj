@@ -17,6 +17,8 @@
 		6D6C99F127B6F1FA0038793A /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6C99F027B6F1FA0038793A /* NetworkController.swift */; };
 		6D6C99F327B701C80038793A /* AlbumListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6C99F227B701C80038793A /* AlbumListTableViewController.swift */; };
 		6D6C99F527B705730038793A /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6C99F427B705730038793A /* AlbumTableViewCell.swift */; };
+		6D7FAF5D27B81D3D00BFFFDD /* AlbumDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7FAF5C27B81D3D00BFFFDD /* AlbumDetails.swift */; };
+		6D7FAF6127B8272600BFFFDD /* AlbumDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7FAF6027B8272600BFFFDD /* AlbumDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		6D6C99F027B6F1FA0038793A /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 		6D6C99F227B701C80038793A /* AlbumListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumListTableViewController.swift; sourceTree = "<group>"; };
 		6D6C99F427B705730038793A /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
+		6D7FAF5C27B81D3D00BFFFDD /* AlbumDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetails.swift; sourceTree = "<group>"; };
+		6D7FAF6027B8272600BFFFDD /* AlbumDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 			children = (
 				6D6C99F227B701C80038793A /* AlbumListTableViewController.swift */,
 				6D6C99F427B705730038793A /* AlbumTableViewCell.swift */,
+				6D7FAF6027B8272600BFFFDD /* AlbumDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -115,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				6D6C99EE27B6EFC20038793A /* Album.swift */,
+				6D7FAF5C27B81D3D00BFFFDD /* AlbumDetails.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -194,8 +200,10 @@
 				6D6C99D427B6E5D60038793A /* AppDelegate.swift in Sources */,
 				6D6C99ED27B6EF9F0038793A /* ResultError.swift in Sources */,
 				6D6C99F327B701C80038793A /* AlbumListTableViewController.swift in Sources */,
+				6D7FAF5D27B81D3D00BFFFDD /* AlbumDetails.swift in Sources */,
 				6D6C99F527B705730038793A /* AlbumTableViewCell.swift in Sources */,
 				6D6C99D627B6E5D60038793A /* SceneDelegate.swift in Sources */,
+				6D7FAF6127B8272600BFFFDD /* AlbumDetailsViewController.swift in Sources */,
 				6D6C99EF27B6EFC20038793A /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

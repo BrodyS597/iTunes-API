@@ -11,7 +11,7 @@ import UIKit.UIImage
 class NetworkController {
     // MARK: -URL
     
-static let baseURL = URL(string: "https://itunes.apple.com")
+    static let baseURL = URL(string: "https://itunes.apple.com")
     
     // MARK: -Fetch Album Func
     static func fetchAlbumWith(searchTerm: String, completion: @escaping (Result<TopLevelDictionaryAlbums, ResultError>) -> Void) {
@@ -40,6 +40,7 @@ static let baseURL = URL(string: "https://itunes.apple.com")
             }
             do {
                 let data = try JSONDecoder().decode(TopLevelDictionaryAlbums.self, from: data)
+                
                 completion(.success(data))
             } catch {
                 completion(.failure(.thrownError(error)))
@@ -48,7 +49,39 @@ static let baseURL = URL(string: "https://itunes.apple.com")
     }//End of fetch album func
     
     // MARK: -Fetch Album Details func
-    
+    static func fetchAlbumDetails(with albumID: String, completion: @escaping (Result<TopLevelDictionaryAlbumDetails, ResultError>) -> Void) {
+        
+        guard let url = baseURL else { return }
+        let lookUpKey = URLQueryItem(name: "id", value: albumID)
+        let mediaKey = URLQueryItem(name: "media", value: "music")
+        let entityKey = URLQueryItem(name: "entity", value: "song")
+        
+        var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
+        urlComponents?.path = "/lookup"
+        urlComponents?.queryItems = [lookUpKey, mediaKey, entityKey]
+        
+        guard let finalURL = urlComponents?.url else {
+            completion(.failure(.invalidURL("Unable to reach the server. Please try again")))
+            return }
+        print(finalURL)
+        
+        URLSession.shared.dataTask(with: finalURL) { data, _, error in
+            if let error = error {
+                completion(.failure(.thrownError(error)))
+            }
+            guard let data = data else {
+                completion(.failure(.noData))
+                return
+            }
+            do {
+                let data = try JSONDecoder().decode(TopLevelDictionaryAlbumDetails.self, from: data)
+                
+                completion(.success(data))
+            } catch {
+                completion(.failure(.thrownError(error)))
+            }
+        }.resume()
+    }//End of fetch album details func
     
     // MARK: -Fetch Album Image Func
     static func fetchAlbumImage(with albumImageString: String, completion: @escaping (Result<UIImage, ResultError>) -> Void) {

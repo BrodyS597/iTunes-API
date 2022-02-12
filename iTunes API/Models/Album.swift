@@ -16,8 +16,10 @@ struct Albums: Decodable {
         case title = "collectionName"
         case trackCount
         case albumImagePath = "artworkUrl100"
+        case albumID = "collectionId"
     }
     let title: String
     let trackCount: Int
     let albumImagePath: String?
+    let albumID: String
 }
