@@ -14,8 +14,7 @@ class AlbumListTableViewController: UITableViewController {
     
     
     // MARK: -Properties
-    var albums: [Albums] = []
-    var albumDetails: [AlbumDetails] = []
+    var albums: [Album] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,32 +39,23 @@ class AlbumListTableViewController: UITableViewController {
     
     
     
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-         if segue.identifier == "toDetailVC" {
-             if let destination = segue.destination as? AlbumDetailsViewController {
-                 
-                 guard let indexPath = tableView.indexPathForSelectedRow else { return }
-                 
-                 let albumToSend = albumDetails[indexPath.row]
-                 NetworkController.fetchAlbumDetails(with: albumToSend.albumID) { result in
-                     switch result {
-                     case .success(let albumDetails):
-                         DispatchQueue.main.async {
-                             destination.albumData = albumDetails
-                         }
-                     case .failure(let error):
-                         print("There was an error!, \(error.errorDescription!)")
-                     }
-                 }
-             }
-         }
-     }
-     
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "toDetailVC" {
+            if let destination = segue.destination as? AlbumDetailsViewController {
+                
+                guard let indexPath = tableView.indexPathForSelectedRow else { return }
+                
+                let albumToSend = albums[indexPath.row]
+                destination.album = albumToSend
+            }
+        }
+    }
+    
     
 }
 

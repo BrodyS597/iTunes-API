@@ -83,7 +83,7 @@
                                 <rect key="frame" x="20" y="468.5" width="374" height="353.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="65" id="gnx-MI-odZ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="trackCell" rowHeight="65" id="gnx-MI-odZ" customClass="TrackTableViewCell" customModule="iTunes_API" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="374" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gnx-MI-odZ" id="gIl-b5-y6i">
@@ -116,6 +116,10 @@
                                                 <constraint firstItem="O0W-VU-HW9" firstAttribute="width" secondItem="gIl-b5-y6i" secondAttribute="width" multiplier="0.736631" id="gRv-S0-4lE"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="runTimeLabel" destination="9z2-Hr-PDf" id="GRf-ak-JrW"/>
+                                            <outlet property="trackTitleLabel" destination="O0W-VU-HW9" id="nqm-TT-cSB"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -133,6 +137,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TmP-5V-cJ2"/>
+                    <connections>
+                        <outlet property="albumImageView" destination="AwU-PA-lPD" id="bKq-yN-zx6"/>
+                        <outlet property="albumNameLabel" destination="Xf9-cX-Y3h" id="Teu-LT-5Pa"/>
+                        <outlet property="albumTracksTableView" destination="xc5-Ur-zF1" id="vNc-Ha-kqM"/>
+                        <outlet property="runTimeLabel" destination="9z2-Hr-PDf" id="83e-la-9Qo"/>
+                        <outlet property="trackTitleLabel" destination="O0W-VU-HW9" id="seB-DQ-I8l"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fbf-V4-pb9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

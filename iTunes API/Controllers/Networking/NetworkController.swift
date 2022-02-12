@@ -49,7 +49,7 @@ class NetworkController {
     }//End of fetch album func
     
     // MARK: -Fetch Album Details func
-    static func fetchAlbumDetails(with albumID: String, completion: @escaping (Result<TopLevelDictionaryAlbumDetails, ResultError>) -> Void) {
+    static func fetchTracks(with albumID: String, completion: @escaping (Result<TopLevelDictionaryAlbumDetails, ResultError>) -> Void) {
         
         guard let url = baseURL else { return }
         let lookUpKey = URLQueryItem(name: "id", value: albumID)

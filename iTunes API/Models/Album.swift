@@ -8,10 +8,10 @@
 import Foundation
 
 struct TopLevelDictionaryAlbums: Decodable {
-    let results: [Albums]
+    let results: [Album]
 }
 
-struct Albums: Decodable {
+struct Album: Decodable {
     private enum CodingKeys: String, CodingKey {
         case title = "collectionName"
         case trackCount

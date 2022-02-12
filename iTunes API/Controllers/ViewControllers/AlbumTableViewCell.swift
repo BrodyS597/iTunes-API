@@ -22,7 +22,7 @@ class AlbumTableViewCell: UITableViewCell {
     
     // MARK: -Cell Funcs
     
-    func setConfiguration(with album: Albums) {
+    func setConfiguration(with album: Album) {
         fetchImage(for: album)
         var configuration = defaultContentConfiguration()
         configuration.text = "\(album.title)"
@@ -31,7 +31,7 @@ class AlbumTableViewCell: UITableViewCell {
         contentConfiguration = configuration
     }
     
-    func fetchImage(for album: Albums) {
+    func fetchImage(for album: Album) {
         guard let albumImagePath = album.albumImagePath else { return }
         
         NetworkController.fetchAlbumImage(with: albumImagePath) { [weak self] result in

@@ -8,19 +8,17 @@
 import Foundation
 
 struct TopLevelDictionaryAlbumDetails: Decodable {
-    let results: [AlbumDetails]
+    let results: [Track]
 }
 
-struct AlbumDetails: Decodable {
+struct Track: Decodable {
     private enum CodingKeys: String, CodingKey {
         case title = "trackName"
-      // case albumImagePath = "artworkUrl100"
         case albumID = "collectionId"
         case kind
         case trackTimeMillis
     }
     let title: String
- //  let albumImagePath: String?
     let albumID: String
     let kind: String
     let trackTimeMillis: Int
