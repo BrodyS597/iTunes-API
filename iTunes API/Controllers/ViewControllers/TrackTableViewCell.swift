@@ -15,13 +15,14 @@ class TrackTableViewCell: UITableViewCell {
     
     func updateViews(with track: Track) {
         trackTitleLabel.text = track.title
-        runTimeLabel.text = formatRunTime(with: track.trackTimeMillis)
+        runTimeLabel.text = formatRunTime(with: track.trackTimeMillis ?? 0)
     }
 
     // MARK: -Helper func
     func formatRunTime(with milliseconds: Int) -> String {
-        let minutes = milliseconds / 60
-        let seconds = milliseconds % 60
+        let totalSeconds = milliseconds / 1000
+        let minutes = totalSeconds / 60
+        let seconds = totalSeconds % 60
         if seconds < 10 {
             let secondsString = "0\(seconds)"
             return "\(minutes): \(secondsString)"

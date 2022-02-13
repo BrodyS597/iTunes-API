@@ -8,7 +8,7 @@
 import UIKit
 
 class AlbumDetailsViewController: UIViewController {
-
+    
     // MARK: -IBOutlets
     @IBOutlet weak var albumNameLabel: UILabel!
     @IBOutlet weak var albumImageView: UIImageView!
@@ -29,7 +29,8 @@ class AlbumDetailsViewController: UIViewController {
                 switch result {
                 case .success(let albumImage):
                     DispatchQueue.main.async {
-                        //self.loadViewIfNeeded()
+                        //making sure the view is loaded before accessing implicity unwrapped values aka setting images.
+                        self.loadViewIfNeeded()
                         self.albumImageView.image = albumImage
                     }
                 case .failure(let error):
@@ -41,11 +42,12 @@ class AlbumDetailsViewController: UIViewController {
     
     func updateViews() {
         guard let album = album else { return }
+        self.albumNameLabel.text = album.title
         let albumID = "\(album.albumID)"
         NetworkController.fetchTracks(with: albumID) { result in
             switch result {
-            case .success(let albumDetails):
-                self.tracks = albumDetails.results
+            case .success(let trackResults):
+                self.tracks = trackResults
                 DispatchQueue.main.async {
                     self.albumTracksTableView.reloadData()
                 }
@@ -54,7 +56,6 @@ class AlbumDetailsViewController: UIViewController {
             }
         }
     }
-    
 }//End of class
 
 extension AlbumDetailsViewController: UITableViewDelegate, UITableViewDataSource {

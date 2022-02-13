@@ -8,7 +8,7 @@
 import Foundation
 
 struct TopLevelDictionaryAlbumDetails: Decodable {
-    let results: [Track?]
+    let results: [Track]
 }
 
 struct Track: Decodable {
@@ -19,7 +19,7 @@ struct Track: Decodable {
         case trackTimeMillis
     }
     let title: String?
-    let albumID: String
-    let kind: String
-    let trackTimeMillis: Int
+    let albumID: Int
+    let kind: String?
+    let trackTimeMillis: Int?
 }

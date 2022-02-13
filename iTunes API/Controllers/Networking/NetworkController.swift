@@ -10,7 +10,6 @@ import UIKit.UIImage
 
 class NetworkController {
     // MARK: -URL
-    
     static let baseURL = URL(string: "https://itunes.apple.com")
     
     // MARK: -Fetch Album Func
@@ -46,19 +45,19 @@ class NetworkController {
                 completion(.failure(.thrownError(error)))
             }
         }.resume()
-    }//End of fetch album func
+    }
     
     // MARK: -Fetch Album Details func
-    static func fetchTracks(with albumID: String, completion: @escaping (Result<TopLevelDictionaryAlbumDetails, ResultError>) -> Void) {
+    static func fetchTracks(with albumID: String, completion: @escaping (Result<[Track], ResultError>) -> Void) {
         
         guard let url = baseURL else { return }
         let lookUpKey = URLQueryItem(name: "id", value: albumID)
-        let mediaKey = URLQueryItem(name: "media", value: "music")
         let entityKey = URLQueryItem(name: "entity", value: "song")
+        let kindKey = URLQueryItem(name: "kind", value: "song")
         
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
         urlComponents?.path = "/lookup"
-        urlComponents?.queryItems = [lookUpKey, mediaKey, entityKey]
+        urlComponents?.queryItems = [lookUpKey, kindKey, entityKey]
         
         guard let finalURL = urlComponents?.url else {
             completion(.failure(.invalidURL("Unable to reach the server. Please try again")))
@@ -75,13 +74,14 @@ class NetworkController {
             }
             do {
                 let data = try JSONDecoder().decode(TopLevelDictionaryAlbumDetails.self, from: data)
-                
-                completion(.success(data))
+                // filters through the array to find which track's value in the array == "song" and completes with those
+                let trackArray = data.results.filter { $0.kind == "song" }
+                completion(.success(trackArray))
             } catch {
                 completion(.failure(.thrownError(error)))
             }
         }.resume()
-    }//End of fetch album details func
+    }
     
     // MARK: -Fetch Album Image Func
     static func fetchAlbumImage(with albumImageString: String, completion: @escaping (Result<UIImage, ResultError>) -> Void) {
@@ -103,5 +103,5 @@ class NetworkController {
             }
             completion(.success(albumImage))
         }.resume()
-    }//end of fetch image func
+    }
 }//End of class
