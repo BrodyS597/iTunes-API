@@ -51,6 +51,16 @@ class AlbumListTableViewController: UITableViewController {
                 guard let indexPath = tableView.indexPathForSelectedRow else { return }
                 
                 let albumToSend = albums[indexPath.row]
+//                NetworkController.fetchTracks(with: "\(albumToSend.albumID)") { result in
+//                    switch result {
+//                    case .success(let albumDetails):
+//                        DispatchQueue.main.async {
+//                            destination.album = albumDetails
+//                        }
+//                    case .failure(let error):
+//                        print("There was an error!, \(error.errorDescription!)")
+//                    }
+//                }
                 destination.album = albumToSend
             }
         }

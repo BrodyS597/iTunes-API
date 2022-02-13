@@ -31,7 +31,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="6BJ-Kq-HVd" kind="show" identifier="toDetailVC" trigger="accessoryAction" id="eLq-KF-vda"/>
+                                    <segue destination="6BJ-Kq-HVd" kind="show" identifier="toDetailVC" id="gra-rn-GY9"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -141,8 +141,6 @@
                         <outlet property="albumImageView" destination="AwU-PA-lPD" id="bKq-yN-zx6"/>
                         <outlet property="albumNameLabel" destination="Xf9-cX-Y3h" id="Teu-LT-5Pa"/>
                         <outlet property="albumTracksTableView" destination="xc5-Ur-zF1" id="vNc-Ha-kqM"/>
-                        <outlet property="runTimeLabel" destination="9z2-Hr-PDf" id="83e-la-9Qo"/>
-                        <outlet property="trackTitleLabel" destination="O0W-VU-HW9" id="seB-DQ-I8l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fbf-V4-pb9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -21,5 +21,5 @@ struct Album: Decodable {
     let title: String
     let trackCount: Int
     let albumImagePath: String?
-    let albumID: String
+    let albumID: Int
 }

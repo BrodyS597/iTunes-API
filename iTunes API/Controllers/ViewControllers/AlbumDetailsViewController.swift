@@ -19,16 +19,17 @@ class AlbumDetailsViewController: UIViewController {
         super.viewDidLoad()
         albumTracksTableView.delegate = self
         albumTracksTableView.dataSource = self
+        updateViews()
     }
     
-    var tracks: [Track] = []
+    var tracks: [Track?] = []
     var album: Album? {
         didSet {
             NetworkController.fetchAlbumImage(with: album?.albumImagePath ?? "") { result in
                 switch result {
                 case .success(let albumImage):
                     DispatchQueue.main.async {
-                        self.loadViewIfNeeded()
+                        //self.loadViewIfNeeded()
                         self.albumImageView.image = albumImage
                     }
                 case .failure(let error):
@@ -40,8 +41,8 @@ class AlbumDetailsViewController: UIViewController {
     
     func updateViews() {
         guard let album = album else { return }
-
-        NetworkController.fetchTracks(with: album.albumID) { result in
+        let albumID = "\(album.albumID)"
+        NetworkController.fetchTracks(with: albumID) { result in
             switch result {
             case .success(let albumDetails):
                 self.tracks = albumDetails.results
@@ -69,7 +70,7 @@ extension AlbumDetailsViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "trackCell", for: indexPath) as? TrackTableViewCell else { return UITableViewCell() }
-        let track = tracks[indexPath.row]
+        guard let track = tracks[indexPath.row] else { return UITableViewCell() }
         cell.updateViews(with: track)
         return cell
     }
